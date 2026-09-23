@@ -3,39 +3,39 @@ import pytest
 from app.main import get_human_age
 
 
-def test_zero_age():
+def test_zero_age() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_below_first_threshold():
+def test_below_first_threshold() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
 
-def test_at_first_threshold():
+def test_at_first_threshold() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
-def test_before_second_threshold():
+def test_before_second_threshold() -> None:
     assert get_human_age(23, 23) == [1, 1]
 
 
-def test_at_second_threshold():
+def test_at_second_threshold() -> None:
     assert get_human_age(24, 24) == [2, 2]
 
 
-def test_before_next_cat_dog_step():
+def test_before_next_cat_dog_step() -> None:
     assert get_human_age(27, 27) == [2, 2]
 
 
-def test_cat_extra_step_dog_not_yet():
+def test_cat_extra_step_dog_not_yet() -> None:
     assert get_human_age(28, 28) == [3, 2]
 
 
-def test_dog_extra_step():
+def test_dog_extra_step() -> None:
     assert get_human_age(28, 29) == [3, 3]
 
 
-def test_large_age():
+def test_large_age() -> None:
     assert get_human_age(100, 100) == [21, 17]
 
 
@@ -57,5 +57,5 @@ def test_large_age():
         (100, 100, [21, 17]),
     ],
 )
-def test_parametrized(cat_age, dog_age, expected):
+def test_parametrized(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
